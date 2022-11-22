@@ -17,7 +17,7 @@
 		688FB111292C3C8700E149F6 /* MessengerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688FB110292C3C8700E149F6 /* MessengerUITests.swift */; };
 		688FB113292C3C8700E149F6 /* MessengerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688FB112292C3C8700E149F6 /* MessengerUITestsLaunchTests.swift */; };
 		688FB126292C435C00E149F6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688FB125292C435C00E149F6 /* LoginViewController.swift */; };
-		688FB128292C436700E149F6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688FB127292C436700E149F6 /* RegisterViewController.swift */; };
+		688FB128292C436700E149F6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688FB127292C436700E149F6 /* SignUpViewController.swift */; };
 		688FB12A292C438800E149F6 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688FB129292C438800E149F6 /* PhotoViewerViewController.swift */; };
 		688FB12C292C439800E149F6 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688FB12B292C439800E149F6 /* VideoPlayerViewController.swift */; };
 		688FB12E292C43B500E149F6 /* NewConverstationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688FB12D292C43B500E149F6 /* NewConverstationViewController.swift */; };
@@ -56,7 +56,7 @@
 		688FB110292C3C8700E149F6 /* MessengerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerUITests.swift; sourceTree = "<group>"; };
 		688FB112292C3C8700E149F6 /* MessengerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		688FB125292C435C00E149F6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		688FB127292C436700E149F6 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		688FB127292C436700E149F6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		688FB129292C438800E149F6 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
 		688FB12B292C439800E149F6 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		688FB12D292C43B500E149F6 /* NewConverstationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConverstationViewController.swift; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 			children = (
 				688FB0F3292C3C8600E149F6 /* ConversationViewController.swift */,
 				688FB125292C435C00E149F6 /* LoginViewController.swift */,
-				688FB127292C436700E149F6 /* RegisterViewController.swift */,
+				688FB127292C436700E149F6 /* SignUpViewController.swift */,
 				688FB129292C438800E149F6 /* PhotoViewerViewController.swift */,
 				688FB12B292C439800E149F6 /* VideoPlayerViewController.swift */,
 				688FB12D292C43B500E149F6 /* NewConverstationViewController.swift */,
@@ -325,7 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				688FB126292C435C00E149F6 /* LoginViewController.swift in Sources */,
-				688FB128292C436700E149F6 /* RegisterViewController.swift in Sources */,
+				688FB128292C436700E149F6 /* SignUpViewController.swift in Sources */,
 				688FB0F4292C3C8600E149F6 /* ConversationViewController.swift in Sources */,
 				688FB12C292C439800E149F6 /* VideoPlayerViewController.swift in Sources */,
 				688FB0F0292C3C8600E149F6 /* AppDelegate.swift in Sources */,
