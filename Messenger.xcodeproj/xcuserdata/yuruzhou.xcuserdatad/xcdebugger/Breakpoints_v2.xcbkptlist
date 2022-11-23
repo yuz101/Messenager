@@ -14,13 +14,13 @@
             filePath = "Messenger/Controllers/LoginViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "didTapLogin()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "708CEC07-A575-4A0B-9E5F-58B093B1A1D7 - 7e7d25bf48030b5d"
+                  uuid = "708CEC07-A575-4A0B-9E5F-58B093B1A1D7 - 7e7d25bf48030bbe"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -30,12 +30,12 @@
                   urlString = "file:///Users/yuruzhou/Projects/Messenger/Messenger/Controllers/LoginViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
                   offsetFromSymbolStart = "52">
                </Location>
                <Location
-                  uuid = "708CEC07-A575-4A0B-9E5F-58B093B1A1D7 - 7e7d25bf48030b5d"
+                  uuid = "708CEC07-A575-4A0B-9E5F-58B093B1A1D7 - 7e7d25bf48030bbe"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -45,12 +45,12 @@
                   urlString = "file:///Users/yuruzhou/Projects/Messenger/Messenger/Controllers/LoginViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
                   offsetFromSymbolStart = "124">
                </Location>
                <Location
-                  uuid = "708CEC07-A575-4A0B-9E5F-58B093B1A1D7 - 7e7d25bf48030b5d"
+                  uuid = "708CEC07-A575-4A0B-9E5F-58B093B1A1D7 - 7e7d25bf48030bbe"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -60,8 +60,8 @@
                   urlString = "file:///Users/yuruzhou/Projects/Messenger/Messenger/Controllers/LoginViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
                   offsetFromSymbolStart = "356">
                </Location>
             </Locations>

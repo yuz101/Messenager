@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignUpViewController: UIViewController {
     
@@ -17,11 +18,8 @@ class SignUpViewController: UIViewController {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person")
+        imageView.image = UIImage(systemName: "person.circle")
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = imageView.frame.size.width / 2.0
-        imageView.layer.borderWidth = 1
-        imageView.layer.borderColor = UIColor.lightGray.cgColor
         imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
         return imageView
@@ -88,7 +86,15 @@ class SignUpViewController: UIViewController {
         return textField
     }()
     
-    private let loginButton: UIButton = {
+    private let errorLabel: UILabel = {
+        let error = UILabel()
+        error.numberOfLines = 0
+        error.font = .systemFont(ofSize: 13)
+        error.textColor = UIColor.systemGray
+        return error
+    }()
+    
+    private let signUpButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sign Up", for: .normal)
         button.backgroundColor = .systemBlue
@@ -109,7 +115,7 @@ class SignUpViewController: UIViewController {
         imageView.isUserInteractionEnabled = true
         
         //Add Login Button Action
-        loginButton.addTarget(self, action: #selector(didTapLogin), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(didTapSignUp), for: .touchUpInside)
         
         //Add Subviews
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -118,14 +124,16 @@ class SignUpViewController: UIViewController {
         lastNameField.translatesAutoresizingMaskIntoConstraints = false
         emailField.translatesAutoresizingMaskIntoConstraints = false
         passwordField.translatesAutoresizingMaskIntoConstraints = false
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        errorLabel.translatesAutoresizingMaskIntoConstraints = false
+        signUpButton.translatesAutoresizingMaskIntoConstraints = false
         
         scrollView.addSubview(imageView)
         scrollView.addSubview(firstNameField)
         scrollView.addSubview(lastNameField)
         scrollView.addSubview(emailField)
         scrollView.addSubview(passwordField)
-        scrollView.addSubview(loginButton)
+        scrollView.addSubview(errorLabel)
+        scrollView.addSubview(signUpButton)
         
         view.addSubview(scrollView)
         
@@ -137,7 +145,7 @@ class SignUpViewController: UIViewController {
         presentPhotoActionSheet()
     }
     
-    @objc func didTapLogin() {
+    @objc func didTapSignUp() {
         guard let email = emailField.text,
               let password = passwordField.text,
               let firstName = firstNameField.text,
@@ -145,18 +153,27 @@ class SignUpViewController: UIViewController {
               !email.isEmpty,
               !password.isEmpty,
               !firstName.isEmpty,
-              !lastName.isEmpty,
-              password.count >= 6
+              !lastName.isEmpty
         else {
-            alertUserLoginError()
+            self.errorLabel.text = "Fields can't be empty. Please enter all the information."
             return
         }
-    }
-    
-    func alertUserLoginError() {
-        let alert = UIAlertController(title: "Login Failed", message: "Please enter all information.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
-        present(alert, animated: true)
+        
+        guard password.count >= 6 else {
+            self.errorLabel.text = "Password can't be less than 6 characters"
+            return
+        }
+        
+        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
+            if let error = error {
+                self?.errorLabel.text = error.localizedDescription
+            } else if let result = result {
+                let user = ChatUser(id: result.user.uid, firstName: firstName, lastName: lastName, emailAddress: email)
+                DataBaseManager.insertUser(user: user)
+                self?.navigationController?.dismiss(animated: true)
+            }
+        }
+        
     }
     
     @objc func didTapRegister() {
@@ -217,11 +234,17 @@ class SignUpViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            loginButton.heightAnchor.constraint(equalToConstant: 46),
-            loginButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
-            loginButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
-            loginButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 10),
-            loginButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
+            errorLabel.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
+            errorLabel.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
+            errorLabel.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 5)
+        ])
+        
+        NSLayoutConstraint.activate([
+            signUpButton.heightAnchor.constraint(equalToConstant: 46),
+            signUpButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
+            signUpButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
+            signUpButton.topAnchor.constraint(equalTo: errorLabel.bottomAnchor, constant: 10),
+            signUpButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
             
         ])
     }
@@ -230,11 +253,11 @@ class SignUpViewController: UIViewController {
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func presentPhotoActionSheet() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { _ in
-            self.presentCamera()
+        actionSheet.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { [weak self] _ in
+            self?.presentCamera()
         }))
-        actionSheet.addAction(UIAlertAction(title: "Choose from Album", style: .default, handler: { _ in
-            self.presentImagePicker()
+        actionSheet.addAction(UIAlertAction(title: "Choose from Album", style: .default, handler: { [weak self] _ in
+            self?.presentImagePicker()
         }))
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(actionSheet, animated: true)
